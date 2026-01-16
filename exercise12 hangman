@@ -1,0 +1,46 @@
+#welcome message
+print("Hello there! Let's play Hangman!")
+
+#importing random module
+import random
+
+#creating word list
+word_list = ["colombo","kandy","negambo","matara","jaffna","galle","anuradhapura","trinkomalee","nuwaraeliya"]
+
+#picking a word
+choose = random.choice(word_list)
+print(choose)
+
+#generating dashes acc. to the word chosen
+length = len(choose)
+life = "❤️"*length
+print("_"*length)
+print(f"You have {length} lives {life} \nHint: It's a city in Sri Lanka 😊")
+
+#creating blanks
+display = []
+for i in range(length):
+    display += "_"
+#print(display)
+
+#initiating the loop
+lives_used = 0
+
+while lives_used < length:
+    #getting user input
+    user = (str(input("Guess a letter: "))).lower()
+    lives_used += 1
+
+    #replacing the blanks with letters
+    for position in range(length):
+        letter = choose[position]
+        if letter == user:
+            display[position] = letter  
+
+
+    #printing the display after every letter entered
+    print(display)
+
+#printing the game over message
+print(f"Your word is {choose}. Well played👌Game Over!")
+     
